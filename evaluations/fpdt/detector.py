@@ -427,6 +427,58 @@ def get_parameter_number(net):
     return {'Total': total_num, 'Trainable': trainable_num}
 
 
+def build_fpdt(model_name="tiny"):
+
+    class Param:
+        def __init__(self, m_name=model_name):
+            # self.pre_trained = "/Users/iyoc/ProjectFiles/DeiTWeights/deit_tiny_patch16_224-a1311bcf.pth"
+            self.dropout = 0.1
+            self.device = "cpu"
+            self.dataset_file = "coco"
+            # self.model_name = "tiny"
+            # self.model_name = "small"
+            self.model_name = m_name
+            self.det_token_num = 100
+            self.set_cost_class = 1
+            self.set_cost_bbox = 5
+            self.set_cost_giou = 2
+            self.bbox_loss_coef = 5
+            self.giou_loss_coef = 2
+            self.bbox_loss_coef = 5
+            self.eos_coef = 0.1
+            self.aux_loss = False
+            # self.batch_size = 2
+            if self.model_name == "tiny":
+                # self.encoder_pt = "/home/ubuntu/allusers/z1t/yoc/convnext_tiny_22k_1k_384.pth"
+                # self.neck_pt = "/home/ubuntu/allusers/z1t/yoc/yolos_ti.pth"
+                # self.encoder_pt = "/Users/iyoc/ProjectFiles/SwinWeights/swin_tiny_patch4_window7_224_22kto1k_finetune.pth"
+                # self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_ti.pth"
+                # self.encoder_pt = "/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_tiny_22k_1k_384.pth"
+                self.neck_pt = None
+                self.encoder_pt = None
+            elif self.model_name == "small":
+                # self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_s_300_pre.pth"
+                # self.encoder_pt = "/Users/iyoc/ProjectFiles/SwinWeights/swin_small_patch4_window7_224_22kto1k_finetune.pth"
+                # self.neck_pt = "/mnt/DataDisk/yoc/yolos_s_300_pre.pth"
+                # self.encoder_pt = "/mnt/DataDisk/yoc/convnext_small_22k_1k_384.pth"
+                # self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_s_300_pre.pth"
+                # self.encoder_pt = "/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_small_22k_1k_384.pth"
+                self.neck_pt = None
+                self.encoder_pt = None
+            elif self.model_name == "base":
+                self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_base.pth"
+                self.encoder_pt = "/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_base_22k_1k_384.pth"
+                # self.encoder_pt = "/Users/iyoc/ProjectFiles/SwinWeights/swin_base_patch4_window12_384_22kto1k.pth"
+
+    num_classes = 91
+
+    args = Param()
+
+    model, c_, p_ = build(args)
+
+    return model
+
+
 if __name__ == "__main__":
     """
     这里的 `num_classes` 有些误导性。
@@ -453,8 +505,8 @@ if __name__ == "__main__":
             self.dropout = 0.1
             self.device = "cpu"
             self.dataset_file = "coco"
-            self.model_name = "tiny"
-            # self.model_name = "small"
+            # self.model_name = "tiny"
+            self.model_name = "small"
             # self.model_name = "base"
             self.det_token_num = 100
             self.set_cost_class = 1
@@ -469,11 +521,11 @@ if __name__ == "__main__":
             if self.model_name == "tiny":
                 # self.encoder_pt = "/home/ubuntu/allusers/z1t/yoc/convnext_tiny_22k_1k_384.pth"
                 # self.neck_pt = "/home/ubuntu/allusers/z1t/yoc/yolos_ti.pth"
+                # self.encoder_pt = "/Users/iyoc/ProjectFiles/SwinWeights/swin_tiny_patch4_window7_224_22kto1k_finetune.pth"
                 # self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_ti.pth"
                 # self.encoder_pt = "/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_tiny_22k_1k_384.pth"
-                # self.encoder_pt = "/Users/iyoc/ProjectFiles/SwinWeights/swin_tiny_patch4_window7_224_22kto1k_finetune.pth"
-                self.encoder_pt = None
                 self.neck_pt = None
+                self.encoder_pt = None
             elif self.model_name == "small":
                 # self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_s_300_pre.pth"
                 # self.encoder_pt = "/Users/iyoc/ProjectFiles/SwinWeights/swin_small_patch4_window7_224_22kto1k_finetune.pth"
@@ -481,8 +533,8 @@ if __name__ == "__main__":
                 # self.encoder_pt = "/mnt/DataDisk/yoc/convnext_small_22k_1k_384.pth"
                 # self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_s_300_pre.pth"
                 # self.encoder_pt = "/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_small_22k_1k_384.pth"
-                self.encoder_pt = None
                 self.neck_pt = None
+                self.encoder_pt = None
             elif self.model_name == "base":
                 self.neck_pt = "/Users/iyoc/ProjectFiles/YolosWeights/yolos_base.pth"
                 self.encoder_pt = "/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_base_22k_1k_384.pth"

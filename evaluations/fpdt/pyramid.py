@@ -108,7 +108,7 @@ class Pyramid(nn.Module):
         for i, (m, c) in enumerate(zip(feature_maps, self.scale_convs)):
             # print("idx:{}, map:{}\nconv:{}.".format(i, m.size(), c))
             # print("idx:{}, map:{}.".format(i, m.size()))
-            print(f"{i}-scaled: {c(m).size()}")
+            print(c(m).size())
             feature_maps[i] = c(m).flatten(2)
             # print("intermediate:{}, scaled:{}\n".format(m.size(), feature_maps[i].size()))
 
@@ -199,8 +199,7 @@ if __name__ == '__main__':
     # print(mod)
 
     # pyramid_model = pyramid_tiny(pretrained=True)
-    # pyramid_model = pyramid_tiny(pretrained="/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_tiny_22k_1k_384.pth")
-    pyramid_model = pyramid_tiny()
+    pyramid_model = pyramid_tiny(pretrained="/Users/iyoc/ProjectFiles/ConvNeXtWeights/convnext_tiny_22k_1k_384.pth")
     # pyramid_model = pyramid_tiny(pretrained="/home/ubuntu/allusers/z1t/yoc/convnext_tiny_22k_1k_384.pth")
     # pyramid_model = pyramid_small(pretrained="/mnt/DataDisk/yoc/convnext_small_22k_1k_384.pth")
     pyramid_model = pyramid_model.to(device)
