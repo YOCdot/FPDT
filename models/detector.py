@@ -54,11 +54,13 @@ class Detector(nn.Module):
 
     def forward(self, samples: NestedTensor):
 
-        if isinstance(samples, (list, torch.Tensor)):
-            samples = nested_tensor_from_tensor_list(samples)
-
-        x = self.backbone(samples.tensors)
+        # FIXME: 测试图片输出所以注释
+        # if isinstance(samples, (list, torch.Tensor)):
+        #     samples = nested_tensor_from_tensor_list(samples)
+        # x = self.backbone(samples.tensors)
         # print("after pyramid: {}".format(x.size()))
+        x = self.backbone(samples)
+
 
         outputs_class = self.class_embed(x)
         outputs_coord = self.bbox_embed(x).sigmoid()
