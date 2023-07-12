@@ -17,5 +17,5 @@ For more details, please read our paper : [FPDT: a multi-scale feature pyramidal
 
 ## Online Illustration
 
-I've deployed the FPDT-Small model on my personal page [iyoc.xyz](https://iyoc.xyz/#/object-detection) as a feature, and the code of it is open sourced in my repo [AIIO](https://github.com/YOCdot/AIIO). Due to my bad frontend dev skills (noob JavaScript learner), the detection have to be done in the way of below demo video does :-(![DEMO](./.github/demo.mp4)
+I've deployed the FPDT-Small model on my personal page [iyoc.xyz](https://iyoc.xyz/#/object-detection) as a feature, and the code of it is open sourced in my repo [AIIO](https://github.com/YOCdot/AIIO). Due to my bad frontend dev skills (noob JavaScript learner), the detection have to be done in the way of below demo video does :-(![DEMO](./.github/demo.gif)
 
