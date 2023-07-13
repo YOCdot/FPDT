@@ -4,16 +4,16 @@
 
 ## Model Architecture
 
-For more details, please read our paper : [FPDT: a multi-scale feature pyramidal object detection transformer](https://doi.org/10.1117/1.JRS.17.026510).
+For more details, please read our paper: [FPDT: a multi-scale feature pyramidal object detection transformer](https://doi.org/10.1117/1.JRS.17.026510).
 
 ![Overall Architecture](./.github/architecture.png)
 
 ## Pre-Trained Models
 
-| Name       | Input Size | Parameters | Epochs | COCO AP | Download (.pth&.onnx)                                        |
-| ---------- | ---------- | ---------- | ------ | ------- | ------------------------------------------------------------ |
-| FPDT-Tiny  | $640^2$    | $34.2 M$   | $150$  | $34.1$  | [Google Drive](https://drive.google.com/drive/folders/1AqhIonqlklbfo-B8nPWX3nHVpT580Znu?usp=sharing) |
-| FPDT-Small | $640^2$    | $72.6M$    | $150$  | $37.7$  | [Google Drive](https://drive.google.com/drive/folders/15-ateU6yni6etBe180E_gbNrCP2pl9Ku?usp=sharing) |
+| Name       | Input Size | Parameters & File Size | Epochs | COCO AP | Download (`.pth`&`.onnx`)                                    |
+| ---------- | ---------- | ---------------------- | ------ | ------- | ------------------------------------------------------------ |
+| FPDT-Tiny  | $640^2$    | $34.2 M$(391.3MB)      | $150$  | $34.1$  | [Google Drive](https://drive.google.com/drive/folders/1AqhIonqlklbfo-B8nPWX3nHVpT580Znu?usp=sharing) |
+| FPDT-Small | $640^2$    | $72.6M$(831.7MB)       | $150$  | $37.7$  | [Google Drive](https://drive.google.com/drive/folders/15-ateU6yni6etBe180E_gbNrCP2pl9Ku?usp=sharing) |
 
 ## Online Illustration
 
